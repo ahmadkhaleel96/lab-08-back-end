@@ -1,67 +1,43 @@
-# lab-07-back-end
+# lab-08-back-end
 
 # City exploler
 
-**Author**: Ahmad K. & Rahsid S.
-**Version**: 0.0.5
+**Author**: Ahmad K. & As'har O.
+**Version**: 0.0.3
 
 ## Overview
-The geo Demo was very helpful, we got kinda confused but Mr. Ghandy helped us with his inner peace. we refactored the code to a more orginized way, and tried to add the Eventful method. 
+this repo is for using the data base and connect it with our js file .
 
 ## Getting Started
-we followed the demo, and the demo video.
+we fellow the steps from trello .
 
 ## Architecture
-we used JavaScript and Node.js. we orginized our work using Trello. 
+we use JS and Sql and Database . 
 
 ## Change Log
-1. we faced the duplication problem and we solved it by emptying the array.
-2. we had the hours show because we used the toString method but we changed it ti toDateString method to get the desired output.
-3. enhanced the respond messages. (sorry about the last messages, but me and my partner had Joker vibes hahaha).
-4. refactored the code based on the instructor's logic.
+1. we faced problem with the dataBase URL that give as the password not correct 
+2. We faced problem that the data is not stored in the Database 
+3. we still work on that .
 
--->
 ## Credits and Collaborations
-credits to the collabrater  Rashid S. 
-the class demo.
- 
- credits to Abdulrahman for help. 
- credits to the amazing help of:
-  1. Ms. Razan quraan (the girl who code).
-  2. Mr. mahmoud alkhudary. (Mr. Boss man).
 
- ========================================================================
+Number and name of feature: __________Do the DataBase table______________________
 
- Number and name of feature: the Weather app only feature.
+Estimate of time needed to complete: __1_hour__
 
-Estimate of time needed to complete: 6 hours
+Start time: __2:30pm___
 
-Start time: 2 PM
+Finish time: __3:30pm___
 
-Finish time: 10PM
+Actual time needed to complete: ___2 hour__
 
-Actual time needed to complete: 5 hours
+/////////////////////////////////////
+Number and name of feature: __________do the schema.sql______________________
 
-==========================================================================
+Estimate of time needed to complete: __1___
 
-Number and name of feature: the Eventful app only feature.
+Start time: __3:30pm___
 
-Estimate of time needed to complete: 4 hours
+Finish time: __4:00pm___
 
-Start time: 2 PM
-
-Finish time: 12 PM
-
-Actual time needed to complete: 6hours
-
-==========================================================================
-
-Number and name of feature: the local storage.
-
-Estimate of time needed to complete: 5 hours
-
-Start time: 2 PM
-
-Finish time: still working
-
-Actual time needed to complete: still working
+Actual time needed to complete: ___30 min__

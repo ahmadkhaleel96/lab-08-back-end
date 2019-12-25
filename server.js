@@ -1,12 +1,12 @@
 'use strict';
 
-// dependencies
+
 const express = require('express');
 const superagent = require('superagent');
 const pg = require('pg');
 const cors = require('cors');
 
-// using dependencies
+// the serve use express and cors and dotenv
 const server = express();
 server.use(cors());
 require('dotenv').config();
@@ -17,20 +17,20 @@ const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 const DARKSKY_API_KEY = process.env.DARKSKY_API_KEY;
 const EVENTFUL_API_KEY = process.env.EVENTFUL_API_KEY;
 const client = new pg.Client(process.env.DATABASE_URL);
- client.on('error', err => console.error(err))
+client.on('error', err => console.error(err));
 
 // to check if the server is listening
 client.connect()
-.then(()=> {
-server.listen(PORT, () => console.log(`Listening to PORT ${PORT}`))
-}	
+  .then(()=> {
+    server.listen(PORT, () => console.log(`Listening to PORT ${PORT}`));
+  }
 )
-.catch( err => {
-	throw `Error happened ${err}`
+  .catch( err => {
+    throw `Error happened ${err}`;
 });
 // main route
 server.get('/', (request, response) => {
-	response.status(200).send('Welcome, i love that you love that i love that you love, my empty page hahaha.');
+	response.status(200).send('Welcome, its worrrrk ');
 });
 
 // location route, locations constructor function, handler and the get with superagent.
@@ -38,7 +38,7 @@ server.get('/', (request, response) => {
 // the server get.
 server.get('/location', locationHandler);
 
-// the location's constructor function.
+// location's constructor function.
 
 function Location(city, locationData) {
 	this.formatted_query = locationData[0].display_name;
@@ -52,10 +52,10 @@ function Location(city, locationData) {
 function locationHandler(request, response) {
 	let city = request.query.city;
 	let sql = 'INSERT INTO lab08 (formatted_query, latitude, longitude) VALUES ($1,$2,$3)';
-	let safeValues = [city]
+	let safeValues = [city];
      client.query(sql, safeValues)
 	.then(results => {
-		response.status(200).json(results.rows) 
+		response.status(200).json(results.rows);
 	})
 	.catch( server.use((error, request, response) => {
 		response.send(500).send(error);
@@ -70,12 +70,12 @@ function locationHandler(request, response) {
 // get function with superagent.
 
 function getLocationData(city) {
-	const url = `https://eu1.locationiq.com/v1/search.php?key=${GEOCODE_API_KEY}&q=${city}&format=json&limit=1`;
+  const url = `https://eu1.locationiq.com/v1/search.php?key=${GEOCODE_API_KEY}&q=${city}&format=json&limit=1`;
 
-	return superagent.get(url).then((data) => {
-		let location = new Location(city, data.body);
-		return location;
-	});
+  return superagent.get(url).then((data) => {
+    let location = new Location(city, data.body);
+    return location;
+  });
 }
 
 // weather route, weathers constructor function, handler and the get with superagent.
@@ -86,8 +86,8 @@ server.get('/weather', weatherHandler);
 // the weather's constructor function.
 
 function Weather(day) {
-	this.time = new Date(day.time * 1000).toDateString();
-	this.forecast = day.summery;
+  this.time = new Date(day.time * 1000).toDateString();
+  this.forecast = day.summery;
 }
 
 //the weather's handler function.
@@ -140,27 +140,27 @@ function eventfulHandler(request, response) {
 // get function using superagent.
 
 function getEventfulData(formatted_query) {
-	const url = `http://api.eventful.com/json/events/search?app_key=${EVENTFUL_API_KEY}&location=${formatted_query}`;
-	console.log('url', url);
-	return superagent.get(url).then((eventData) => {
-		let info = JSON.parse(eventData.text);
-		// console.log('info',info.events.event)
-		if (info.events) {
-			console.log('hi', info.events);
-			let event = info.events.event.map((day) => new Eventful(day));
-			return event;
-		}
-	});
+  const url = `http://api.eventful.com/json/events/search?app_key=${EVENTFUL_API_KEY}&location=${formatted_query}`;
+  console.log('url', url);
+  return superagent.get(url).then((eventData) => {
+    let eventConvert = JSON.parse(eventData.text);
+    // console.log('info',info.events.event)
+    if (eventConvert.events) {
+      console.log('hi', eventConvert.events);
+      let event = eventConvert.events.event.map((day) => new Eventful(day));
+      return event;
+    }
+});
 }
 
 // The 404 Error message, when a route doesn't exist.
 
 server.use('*', (request, response) => {
-	response.status(404).send('sorry, page is not found');
+  response.status(404).send('sorry, page is not found');
 });
 
 // the 500 Error, when an error occurs.
 
 server.use((error, request, response) => {
-	response.send(500).send(error);
+  response.send(500).send(error);
 });
