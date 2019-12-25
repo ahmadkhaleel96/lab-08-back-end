@@ -25,12 +25,12 @@ client.connect()
     server.listen(PORT, () => console.log(`Listening to PORT ${PORT}`));
   }
 )
-  .catch( err => {
+.catch( err => {
     throw `Error happened ${err}`;
 });
 // main route
 server.get('/', (request, response) => {
-	response.status(200).send('Welcome, its worrrrk ');
+	response.status(200).send('Welcome, i love that you love that i love that you love, my empty page hahaha.');
 });
 
 // location route, locations constructor function, handler and the get with superagent.
