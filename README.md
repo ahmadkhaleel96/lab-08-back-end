@@ -50,7 +50,18 @@ Estimate of time needed to complete: 4 hours
 
 Start time: 2 PM
 
+Finish time: 12 PM
+
+Actual time needed to complete: 6hours
+
+==========================================================================
+
+Number and name of feature: the local storage.
+
+Estimate of time needed to complete: 5 hours
+
+Start time: 2 PM
+
 Finish time: still working
 
-Actual time needed to complete: unknown 
-
+Actual time needed to complete: still working
